@@ -1,3 +1,9 @@
+#include <string>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 /**
  * @class DiceMan
  */
@@ -6,15 +12,31 @@ class DiceMan {
     /**
      * @property tasks
      */
-    char tasks[4][100];
+    vector<string> tasks;
 
     public:
+
+    /**
+     * @constructor
+     */
+    DiceMan() {
+        tasks.push_back("First task");
+        tasks.push_back("Second task");
+        tasks.push_back("Third task");
+    }
 
     /**
      * @method getTasks
      * @param double limit
      * @return double
      */
-    double getTasks(double limit);
+    vector<string> getTasks(double limit);
+
+    /**
+     * @method count
+     * @param double limit
+     * @return double
+     */
+    double count();
 
 };
