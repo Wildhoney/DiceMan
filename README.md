@@ -1,4 +1,4 @@
 DiceMan
 =======
 
-Choose from a list of six tasks each day, and then roll the dice to decide which to fulfill.
+Terminal based application using <a href="https://www.firebase.com/" target="_blank">Firebase</a> for storing tasks.
