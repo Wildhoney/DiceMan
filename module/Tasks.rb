@@ -1,5 +1,5 @@
 module DiceMan
-  class Add < Base
+  class Tasks < Base
 
     # @method addTask
     # @param username
