@@ -8,7 +8,7 @@ require './module/channel/begin.rb'
 
 opts = Trollop::options do
   opt :add, "Add your own task for others to fulfill", :short => 'a'
-  opt :begin, "Compile a list of possible tasks and roll the dice", :short => 'b'
+  opt :start, "Compile a list of possible tasks and roll the dice", :short => 's'
 end
 
 if opts.has_key?(:add)
