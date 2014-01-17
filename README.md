@@ -15,4 +15,4 @@ You must have Ruby installed and accessible via the terminal in order to use Dic
 Once installed, you can see a list of options by specifying `diceman --help` in your terminal. From there you can decide which path to take.
 
 * Add a task to the collection for others to use: `diceman --add`/`diceman -a`;
-* Begin the process of obtaining tasks and rolling the dice: `diceman --begin`/`diceman` -b;
+* Begin the process of obtaining tasks and rolling the dice: `diceman --begin`/`diceman -b`;
