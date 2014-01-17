@@ -1,5 +1,5 @@
 module DiceMan
-  class Output
+  class Begin < Base
 
   end
 end
