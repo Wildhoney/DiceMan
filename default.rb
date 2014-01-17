@@ -13,6 +13,9 @@ end
 # Create an instance of the task object.
 dice_man = DiceMan::Tasks.new
 
+# Amount of tasks that are required to be chosen.
+required_tasks = 5
+
 if opts.has_key?(:add) && opts[:add]
 
   # Gather the username to be associated with the task.
@@ -36,18 +39,27 @@ elsif opts.has_key?(:start) && opts[:start]
   possible_tasks = []
   split_on = /,/
 
-  # Obtain the tasks from Firebase, and allow the user to choose some.
-  dice_man.get_tasks(5).each_with_index do |task, index|
-    selection_number = (index + 1)
-    possible_tasks[selection_number] = task
-    print " #{selection_number}. #{task['task']}\n"
-  end
+  # Keep prompting for more tasks till they've chosen 5.
+  while chosen_tasks.length < required_tasks do
 
-  # Iterate over each selection the user has made, and attempt to map that to a task
-  # from the Firebase collection.
-  gets.strip.split(split_on).each do |value|
-    task = possible_tasks[value.to_i] unless possible_tasks[value.to_i].nil?
-    chosen_tasks.push task['task'] unless task.nil?
+    # Notify the person of how many tasks they've left to choose before they can roll
+    # the dice.
+    print "You need to choose #{required_tasks - chosen_tasks.length} before rolling the dice!\n"
+
+    # Obtain the tasks from Firebase, and allow the user to choose some.
+    dice_man.get_tasks(20).each_with_index do |task, index|
+      selection_number = (index + 1)
+      possible_tasks[selection_number] = task
+      print " #{selection_number}. #{task['task']}\n"
+    end
+
+    # Iterate over each selection the user has made, and attempt to map that to a task
+    # from the Firebase collection.
+    gets.strip.split(split_on).each do |value|
+      task = possible_tasks[value.to_i]
+      chosen_tasks.push task['task'] unless task.nil?
+    end
+
   end
 
   print "You've chosen #{chosen_tasks.length} tasks..."
