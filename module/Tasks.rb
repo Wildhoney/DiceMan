@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 module DiceMan
   class Tasks < Base
 
