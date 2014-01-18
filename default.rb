@@ -32,7 +32,7 @@ if opts.has_key?(:add) && opts[:add]
 
 elsif opts.has_key?(:start) && opts[:start]
 
-  print "\n Please choose a task to add: \n\n".colorize(:color => :black, :background => :light_cyan)
+  print "\n Please choose #{required_tasks} tasks to roll the dice... \n\n".colorize(:color => :black, :background => :light_cyan)
   print "If you'd like more than one, specify as: 1,3,4.\n".colorize(:background => :black)
 
   # Initialise the variables.
@@ -45,11 +45,11 @@ elsif opts.has_key?(:start) && opts[:start]
 
     # Notify the person of how many tasks they've left to choose before they can roll
     # the dice.
-    print "You need to choose #{required_tasks - chosen_tasks.length} more before rolling the dice!\n\n"
+    print "You need to choose #{required_tasks - chosen_tasks.length} more.\n\n"
 
     # Obtain the tasks from Firebase, and allow the user to choose some.
     dice_man.get_tasks(20).each_with_index do |task, index|
-      
+
       selection_number = (index + 1)
       possible_tasks[selection_number] = task
 
