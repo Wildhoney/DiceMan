@@ -49,13 +49,14 @@ elsif opts.has_key?(:start) && opts[:start]
 
     # Obtain the tasks from Firebase, and allow the user to choose some.
     dice_man.get_tasks(20).each_with_index do |task, index|
+      
       selection_number = (index + 1)
       possible_tasks[selection_number] = task
+
       print " #{selection_number}. ".white
       print "#{task['task']}\n".cyan
-    end
 
-    #[:black, :red, :green, :yellow, :blue, :magenta, :cyan, :white, :default, :light_black, :light_red, :light_green, :light_yellow, :light_blue, :light_magenta, :light_cyan, :light_white]
+    end
 
     # Label for selecting your tasks.
     print "\nSelection: "
