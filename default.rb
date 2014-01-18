@@ -19,21 +19,26 @@ required_tasks = 5
 
 if opts.has_key?(:add) && opts[:add]
 
+  print "\n You're adding a task for others to choose from... \n\n".colorize(:color => :black, :background => :light_cyan)
+
   # Gather the username to be associated with the task.
-  print "What alias should we go for? "
+  print "Alias? "
   username = gets.strip
 
   # ...And finally the actual task for others to fulfill.
-  print "...And what is your task? "
+  print "Task? "
   task = gets.strip
 
   # We'll begin the process of adding a new task.
   dice_man.add_task(username, task)
 
+  # Success!
+  print "\n Thank you! It'll be reviewed before being available. \n\n".colorize(:color => :black, :background => :light_green)
+
 elsif opts.has_key?(:start) && opts[:start]
 
   print "\n Please choose #{required_tasks} tasks to roll the dice... \n\n".colorize(:color => :black, :background => :light_cyan)
-  print "If you'd like more than one, specify as: 1,3,4.\n".colorize(:background => :black)
+  print "If you'd like more than one, specify as: 1,3,4.\n"
 
   # Initialise the variables.
   chosen_tasks = []
