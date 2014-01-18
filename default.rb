@@ -2,6 +2,7 @@
 
 require 'trollop'
 require 'firebase'
+require 'colorize'
 require './module/Base.rb'
 require './module/Tasks.rb'
 
@@ -31,8 +32,8 @@ if opts.has_key?(:add) && opts[:add]
 
 elsif opts.has_key?(:start) && opts[:start]
 
-  print "Please choose a task to add:\n"
-  print "If you'd like more than one, specify as: 1,3,4.\n\n"
+  print "\n Please choose a task to add: \n\n".colorize(:color => :black, :background => :light_cyan)
+  print "If you'd like more than one, specify as: 1,3,4.\n".colorize(:background => :black)
 
   # Initialise the variables.
   chosen_tasks = []
@@ -44,14 +45,20 @@ elsif opts.has_key?(:start) && opts[:start]
 
     # Notify the person of how many tasks they've left to choose before they can roll
     # the dice.
-    print "You need to choose #{required_tasks - chosen_tasks.length} before rolling the dice!\n"
+    print "You need to choose #{required_tasks - chosen_tasks.length} more before rolling the dice!\n\n"
 
     # Obtain the tasks from Firebase, and allow the user to choose some.
     dice_man.get_tasks(20).each_with_index do |task, index|
       selection_number = (index + 1)
       possible_tasks[selection_number] = task
-      print " #{selection_number}. #{task['task']}\n"
+      print " #{selection_number}. ".white
+      print "#{task['task']}\n".cyan
     end
+
+    #[:black, :red, :green, :yellow, :blue, :magenta, :cyan, :white, :default, :light_black, :light_red, :light_green, :light_yellow, :light_blue, :light_magenta, :light_cyan, :light_white]
+
+    # Label for selecting your tasks.
+    print "\nSelection: "
 
     # Iterate over each selection the user has made, and attempt to map that to a task
     # from the Firebase collection.
@@ -59,6 +66,9 @@ elsif opts.has_key?(:start) && opts[:start]
       task = possible_tasks[value.to_i]
       chosen_tasks.push task['task'] unless task.nil?
     end
+
+    # Another new-line at the end of the selection.
+    print "\n"
 
   end
 

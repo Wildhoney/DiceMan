@@ -10,7 +10,7 @@ Based on the fabulous book, <a href="http://www.amazon.co.uk/The-Dice-Man-Luke-R
 Getting Started
 -------
 
-You must have Ruby installed and accessible via the terminal in order to use DiceMan.
+You must have Ruby installed and accessible via the terminal in order to use DiceMan. You will also need to install all of the Ruby dependencies with `gem install`.
 
 Once installed, you can see a list of options by specifying `diceman --help` in your terminal. From there you can decide which path to take.
 
