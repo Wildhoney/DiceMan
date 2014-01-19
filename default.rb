@@ -19,15 +19,29 @@ required_tasks = 5
 
 if opts.has_key?(:add) && opts[:add]
 
+  # Initialise the variables.
+  username = nil
+  task = nil
+
   print "\n You're adding a task for others to choose from... \n\n".colorize(:color => :black, :background => :light_cyan)
 
-  # Gather the username to be associated with the task.
-  print "Alias? "
-  username = gets.strip
+  while username.nil? do
 
-  # ...And finally the actual task for others to fulfill.
-  print "Task? "
-  task = gets.strip
+    # Gather the username to be associated with the task.
+    print "Alias? "
+    username = gets.strip
+    username = nil unless username.length != 0
+
+  end
+
+  while task.nil? do
+
+    # ...And finally the actual task for others to fulfill.
+    print "Task? "
+    task = gets.strip
+    task = nil unless task.length != 0
+
+  end
 
   # We'll begin the process of adding a new task.
   dice_man.add_task(username, task)
